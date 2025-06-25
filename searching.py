@@ -13,10 +13,12 @@ e=d
 def search(a,b,c,d,e):  
     print(a[c:d])
     e=e//2
-    if a[c]==b:
-        return c
-    elif a[c]>b:
-        search(a,b,c,d-len(a)+e,e)
+    if a[c+e]==b:
+        return c+e
+    elif e==1 and a[c+e]!=b:
+        return -1
+    elif a[c+e]>b:
+        return search(a,b,c,d-e-1,e)
     else:
-        search(a,b,c+len(a)-e,d,e)
-print(search(a,13,c,d,e))
+        return search(a,b,c+e+1,d,e)
+print(search(a,24,c,d,e))
